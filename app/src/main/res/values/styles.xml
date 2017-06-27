@@ -8,4 +8,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextWhite">
+        <item name="android:textSize">40sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Text.Item">
+        <item name="android:textSize">40sp</item>
+    </style>
+
+    <style name="Text">
+        <item name="android:fontFamily">Roboto-Light</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:padding">16dp</item>
+    </style>
 </resources>
