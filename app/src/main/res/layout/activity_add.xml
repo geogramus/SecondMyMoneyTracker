@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_pattern"
+    tools:context="com.loftscholl.mymoneytrackertwo.MainActivity">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorWhite"
+
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_left">
+
+        <EditText
+
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:hint="@string/name_hint"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/price"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:hint="@string/price_hint"
+            android:inputType="number"
+            android:textSize="@dimen/textSize" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:paddingEnd="@dimen/margin_left"
+            android:paddingStart="@dimen/margin_left"
+            android:text="Р"
+            android:textSize="@dimen/textSize" />
+
+        <TextView
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:paddingEnd="@dimen/margin_left"
+            android:paddingStart="@dimen/margin_left"
+            android:text="+"
+            android:textSize="@dimen/textSize" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
