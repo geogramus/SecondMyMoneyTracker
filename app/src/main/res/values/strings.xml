@@ -1,6 +1,16 @@
 <resources>
-    <string name="app_name">MyMoneyTrackerTwo</string>
+    <string name="app_name">My Application</string>
     <string name="name_hint">Название</string>
-    <string name="price_hint">0</string>
+    <string name="price_hint">0P</string>
     <string name="rouble">\u20bd</string>
+
+    <string name="expenses">Расходы</string>
+    <string name="incomes">Доходы</string>
+    <string name="balance">Баланс</string>
+
+    <array name="main_pager_titles">
+        <item>@string/expenses</item>
+        <item>@string/incomes</item>
+        <item>@string/balance</item>
+    </array>
 </resources>
