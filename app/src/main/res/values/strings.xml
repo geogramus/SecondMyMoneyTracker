@@ -7,6 +7,7 @@
     <string name="expenses">Расходы</string>
     <string name="incomes">Доходы</string>
     <string name="balance">Баланс</string>
+    <string name="error">Произошла ошибка</string>
 
     <array name="main_pager_titles">
         <item>@string/expenses</item>
