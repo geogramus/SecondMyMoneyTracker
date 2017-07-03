@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Учет бюджета</string>
     <string name="name_hint">Название</string>
     <string name="price_hint">0P</string>
     <string name="rouble">\u20bd</string>
@@ -8,6 +8,7 @@
     <string name="incomes">Доходы</string>
     <string name="balance">Баланс</string>
     <string name="error">Произошла ошибка</string>
+    <string name="new_item">Новая запись</string>
 
     <array name="main_pager_titles">
         <item>@string/expenses</item>
