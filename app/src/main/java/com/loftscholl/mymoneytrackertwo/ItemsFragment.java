@@ -1,5 +1,6 @@
 package com.loftscholl.mymoneytrackertwo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,9 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Response;
 
+import static android.app.Activity.RESULT_OK;
+import static com.loftscholl.mymoneytrackertwo.AddItemActivity.RC_ADD_ITEM;
+
 /**
  * Created by Гео on 27.06.2017.
  */
@@ -31,9 +35,11 @@ public class ItemsFragment extends Fragment {
     private static final int LOADER_ITEMS = 0;
     private static final int LOADER_ADD = 1;
     private static final int LOADER_REMOVE = 2;
+
     private String type;
     private LSApi api;
     private ItemsAdapter adapter = new ItemsAdapter();
+    private View add;
 
 
     @Nullable
@@ -47,6 +53,15 @@ public class ItemsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         final RecyclerView items = (RecyclerView) view.findViewById(R.id.items);
         items.setAdapter(adapter);
+        add = view.findViewById(R.id.add);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AddItemActivity.class);
+                intent.putExtra(AddItemActivity.EXTRA_TYPE, type);
+                startActivityForResult(intent, RC_ADD_ITEM);
+            }
+        });
         type = getArguments().getString(ARG_TYPE);
         api = ((LSApp) getActivity().getApplication()).api();
         loadItems();
@@ -151,5 +166,11 @@ public class ItemsFragment extends Fragment {
             }
         }).forceLoad();
 
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == RC_ADD_ITEM && resultCode == RESULT_OK) {
+            Item item = (Item) data.getSerializableExtra(AddItemActivity.RESULT_ITEM);
+        }
     }
 }
