@@ -1,5 +1,6 @@
 package com.loftscholl.mymoneytrackertwo;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,8 +8,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -40,6 +49,57 @@ public class ItemsFragment extends Fragment {
     private LSApi api;
     private ItemsAdapter adapter = new ItemsAdapter();
     private View add;
+    private ActionMode actionMode;
+    private SwipeRefreshLayout refresh;
+    private ActionMode.Callback actionModeCallback = new ActionMode.Callback() {
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            mode.getMenuInflater().inflate(R.menu.items, menu);
+            add.setVisibility(View.GONE);
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false;
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.menu_remove:
+                    new AlertDialog.Builder(getContext())
+                            .setTitle(R.string.app_name)
+                            .setMessage(R.string.confirm_remove)
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int id) {
+                                    for (int i = adapter.getSelectedItems().size() - 1;
+                                         i >= 0; i--)
+                                        removeItem(adapter.remove(adapter.getSelectedItems().get(i)));
+                                }
+                            })
+                            .setNegativeButton(android.R.string.cancel, null)
+                            .setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                @Override
+                                public void onDismiss(DialogInterface dialog) {
+                                    actionMode.finish();
+                                }
+                            })
+                            .show();
+                    return true;
+            }
+
+            return false;
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+            actionMode = null;
+            adapter.clearSeclections();
+            add.setVisibility(View.VISIBLE);
+        }
+    };
 
 
     @Nullable
@@ -53,6 +113,36 @@ public class ItemsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         final RecyclerView items = (RecyclerView) view.findViewById(R.id.items);
         items.setAdapter(adapter);
+        final GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public void onLongPress(MotionEvent e) {
+                if (actionMode != null) return;
+                actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
+                adapter.toggleSelection(items.getChildLayoutPosition(items.findChildViewUnder(e.getX(), e.getY())));
+            }
+
+            @Override
+            public boolean onSingleTapConfirmed(MotionEvent e) {
+                if (actionMode != null)
+                    adapter.toggleSelection(items.getChildLayoutPosition(items.findChildViewUnder(e.getX(), e.getY())));
+                return super.onSingleTapConfirmed(e);
+            }
+        });
+        items.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return gestureDetector.onTouchEvent(motionEvent);
+            }
+        });
+        refresh = view.findViewById(R.id.refresh);
+        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadItems();
+            }
+
+        });
         add = view.findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +186,8 @@ public class ItemsFragment extends Fragment {
                     adapter.clear();
                     adapter.addAll(data);
                 }
+                refresh.setRefreshing(false);
+
             }
 
             @Override
@@ -173,4 +265,5 @@ public class ItemsFragment extends Fragment {
             Item item = (Item) data.getSerializableExtra(AddItemActivity.RESULT_ITEM);
         }
     }
+
 }
