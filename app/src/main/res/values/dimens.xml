@@ -2,4 +2,5 @@
 <resources>
     <dimen name="margin_left">16dp</dimen>
     <dimen name="textSize">20dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
 </resources>

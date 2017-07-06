@@ -2,16 +2,16 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="@dimen/margin_small"
+    >
 
-    android:orientation="vertical"
-    android:padding="10dp">
-
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <RelativeLayout
         android:id="@+id/item_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-
         <TextView
             android:id="@+id/name"
             style="@style/Text"
@@ -19,9 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_toStartOf="@id/price"
-
-            android:background="@color/yellow" />
-
+            android:background="@drawable/bg_item" />
         <TextView
             android:id="@+id/price"
             style="@style/Text.Item"
@@ -34,7 +32,6 @@
             android:textStyle="bold"
 
             />
-
-
     </RelativeLayout>
+    </android.support.v7.widget.CardView>
 </FrameLayout>

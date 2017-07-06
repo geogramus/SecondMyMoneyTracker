@@ -49,7 +49,7 @@
             android:enabled="false"
             android:paddingEnd="@dimen/margin_left"
             android:paddingStart="@dimen/margin_left"
-            android:text="Р"
+            android:text="@string/rouble"
             android:textSize="@dimen/textSize" />
 
         <TextView

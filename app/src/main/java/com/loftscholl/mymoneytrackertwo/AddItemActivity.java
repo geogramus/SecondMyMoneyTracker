@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.Serializable;
-
 public class AddItemActivity extends AppCompatActivity {
     public static final String EXTRA_TYPE = "type";
     public static final String RESULT_ITEM = "item";
@@ -67,7 +65,7 @@ public class AddItemActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent result = new Intent();
-                result.putExtra(RESULT_ITEM, (Serializable) new Item(name.getText().toString(), Integer.valueOf(price.getText().toString()), type));
+                result.putExtra(RESULT_ITEM, new Item(name.getText().toString(), Integer.valueOf(price.getText().toString()), type));
                 setResult(RESULT_OK, result);
                 finish();
             }
