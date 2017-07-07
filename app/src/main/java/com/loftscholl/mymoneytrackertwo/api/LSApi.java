@@ -28,4 +28,7 @@ public interface LSApi {
     @POST("items/remove")
     Call<Result> remove(@Query("id") int id);
 
+    @GET("auth")
+    Call<AuthResult> auth(@Query("social_user_id") String socialUserId);
+
 }

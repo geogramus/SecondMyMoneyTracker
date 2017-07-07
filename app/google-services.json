@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "496392925631",
+    "project_id": "moneytracker-172917"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496392925631:android:2ee5c52cf268f9cc",
+        "android_client_info": {
+          "package_name": "com.loftscholl.mymoneytrackertwo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "496392925631-6biv83361s13vrpmg8ph24euh35b7l20.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.loftscholl.mymoneytrackertwo",
+            "certificate_hash": "e292d2c8f10ea3325a51f3bce4682f32c5cffd6b"
+          }
+        },
+        {
+          "client_id": "496392925631-gn8rgu2n9oi57u6ahhcqaa2ct5doavek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsvqnAoY31eSPi54FOJXMhYMHIB8D8Zx8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

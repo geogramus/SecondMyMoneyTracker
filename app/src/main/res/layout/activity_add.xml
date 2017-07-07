@@ -19,7 +19,7 @@
         android:background="@color/colorWhite"
 
         android:orientation="horizontal"
-        android:padding="@dimen/margin_left">
+        android:padding="@dimen/margin_middle">
 
         <EditText
 
@@ -47,8 +47,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:enabled="false"
-            android:paddingEnd="@dimen/margin_left"
-            android:paddingStart="@dimen/margin_left"
+            android:paddingEnd="@dimen/margin_middle"
+            android:paddingStart="@dimen/margin_middle"
             android:text="@string/rouble"
             android:textSize="@dimen/textSize" />
 
@@ -57,8 +57,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:enabled="false"
-            android:paddingEnd="@dimen/margin_left"
-            android:paddingStart="@dimen/margin_left"
+            android:paddingEnd="@dimen/margin_middle"
+            android:paddingStart="@dimen/margin_middle"
             android:text="+"
             android:textSize="@dimen/textSize" />
 
