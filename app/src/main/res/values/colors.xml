@@ -12,4 +12,9 @@
     <color name="colorIndicator">#fcc31e</color>
     <color name="item_selected">#995200</color>
     <color name="colorBackgroundIntro">#95c9b8</color>
+    <color name="colorExpense">#fcc31e</color>
+    <color name="colorItem">#f76c41</color>
+    <color name="colorPrimaryBright">#3ab7ae</color>
+    <color name="colorComment">#95989a</color>
+    <color name="item_secondSelected">#954f00</color>
 </resources>

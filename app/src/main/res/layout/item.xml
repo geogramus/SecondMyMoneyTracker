@@ -28,7 +28,7 @@
             android:layout_alignBottom="@+id/name"
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/name"
-            android:background="@color/shadow_yellow"
+            android:background="@drawable/bg_seconditem"
             android:textStyle="bold"
 
             />
