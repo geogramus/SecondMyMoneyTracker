@@ -105,6 +105,7 @@ public class ItemsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.items, null);
+
     }
 
     @Override
@@ -263,6 +264,7 @@ public class ItemsFragment extends Fragment {
         if (requestCode == RC_ADD_ITEM && resultCode == RESULT_OK) {
             Item item = (Item) data.getSerializableExtra(AddItemActivity.RESULT_ITEM);
             addItem(item);
+            loadItems();
             Toast toast = Toast.makeText(getContext(), item.name, Toast.LENGTH_LONG);
             toast.show();
         }

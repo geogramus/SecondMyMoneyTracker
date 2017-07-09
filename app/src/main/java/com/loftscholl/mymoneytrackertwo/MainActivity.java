@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     private class MainPagerAdapter extends FragmentPagerAdapter {
         private final String[] types = {"expense",
                 "income"};

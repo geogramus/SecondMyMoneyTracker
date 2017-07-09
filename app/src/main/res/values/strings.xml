@@ -13,6 +13,11 @@
     <string name="introText">"Ваш незаменимый помощник
         в управлении бюджетом"</string>
 
+    <string name="your_balance">ваш баланс</string>
+    <string name="expense">расход</string>
+    <string name="income">доход</string>
+
+    <string name="price">%1$d P</string>
     <array name="main_pager_titles">
         <item>@string/expenses</item>
         <item>@string/incomes</item>

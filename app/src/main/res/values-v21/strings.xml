@@ -1,5 +1,5 @@
 <resources>
 
     <string name="rouble">\u20bd</string>
-
+    <string name="price">%1$d \u20bd</string>
 </resources>
