@@ -11,4 +11,5 @@
     <color name="colorTableBackground">#95c9b8</color>
     <color name="colorIndicator">#fcc31e</color>
     <color name="item_selected">#995200</color>
+    <color name="colorBackgroundIntro">#95c9b8</color>
 </resources>

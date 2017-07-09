@@ -1,5 +1,6 @@
 package com.loftscholl.mymoneytrackertwo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -9,23 +10,31 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
+    private TabLayout tabs;
+    private ViewPager pages;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
-        final ViewPager pages = (ViewPager) findViewById(R.id.pages);
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        //final RecyclerView items = (RecyclerView) findViewById(R.id.items);
-        //  items.setAdapter(new ItemsAdapter());
-        pages.setAdapter(new MainPagerAdapter());
-        tabs.setupWithViewPager(pages);
-
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!((LSApp) getApplication()).isLoggedIn()) {
+            startActivity(new Intent(this, AuthActivity.class));
+        } else {
+            tabs = (TabLayout) findViewById(R.id.tabs);
+            pages = (ViewPager) findViewById(R.id.pages);
+            toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            pages.setAdapter(new MainPagerAdapter());
+            tabs.setupWithViewPager(pages);
+        }
+    }
 
     private class MainPagerAdapter extends FragmentPagerAdapter {
         private final String[] types = {"expense",
@@ -36,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             super(getSupportFragmentManager());
             titles = getResources().getStringArray(R.array.main_pager_titles);
         }
+
         @Override
         public Fragment getItem(int position) {
             if (position == getCount() - 1)

@@ -10,6 +10,8 @@
     <string name="error">Произошла ошибка</string>
     <string name="new_item">Новая запись</string>
     <string name="confirm_remove">Точно удаляем строки?</string>
+    <string name="introText">"Ваш незаменимый помощник
+        в управлении бюджетом"</string>
 
     <array name="main_pager_titles">
         <item>@string/expenses</item>

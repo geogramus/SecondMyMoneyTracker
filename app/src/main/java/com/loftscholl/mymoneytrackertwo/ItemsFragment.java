@@ -74,8 +74,7 @@ public class ItemsFragment extends Fragment {
                             .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int id) {
-                                    for (int i = adapter.getSelectedItems().size() - 1;
-                                         i >= 0; i--)
+                                    for (int i = adapter.getSelectedItems().size() - 1; i >= 0; i--)
                                         removeItem(adapter.remove(adapter.getSelectedItems().get(i)));
                                 }
                             })
@@ -263,6 +262,9 @@ public class ItemsFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == RC_ADD_ITEM && resultCode == RESULT_OK) {
             Item item = (Item) data.getSerializableExtra(AddItemActivity.RESULT_ITEM);
+            addItem(item);
+            Toast toast = Toast.makeText(getContext(), item.name, Toast.LENGTH_LONG);
+            toast.show();
         }
     }
 

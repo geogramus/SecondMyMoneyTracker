@@ -15,7 +15,6 @@ import java.util.List;
  */
 class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHolder> {
     final List<Item> items = new ArrayList<>();
-    private MainActivity mainActivity;
     private SparseBooleanArray selectedItems = new SparseBooleanArray();
 
 
@@ -61,7 +60,7 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHolder> {
 
     List<Integer> getSelectedItems() {
         List<Integer> items = new ArrayList<>(selectedItems.size());
-        for (int i = 0; i < items.size(); i++) {
+        for (int i = 0; i < selectedItems.size(); i++) {
             items.add(selectedItems.keyAt(i));
         }
         return items;
